@@ -7,8 +7,11 @@ package src.views
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import com.greensock.plugins.GlowFilterPlugin;
+	import com.greensock.TimelineMax;
 	import com.greensock.plugins.DropShadowFilterPlugin;
 	import com.greensock.plugins.TweenPlugin;
+	import com.greensock.events.TweenEvent;
+	import src.events.NavigationEvent;
 		
 	/**
 	 * ...
@@ -18,6 +21,7 @@ package src.views
 	public class HomeView extends Sprite 
 	{
 		private var bg:MovieClip;
+		private var timeline:TimelineMax;
 		
 		public function HomeView() 
 		{
@@ -39,24 +43,37 @@ package src.views
 			bg.y = -bg.height;
 			bg.jugar.scaleX = bg.jugar.scaleY = 0;
 			bg.instrucciones.scaleX = bg.instrucciones.scaleY = 0;
-			TweenLite.to(bg, 1, { y:0, ease:Bounce.easeOut,onComplete:animarBotones } );
+			timeline = new TimelineMax();
+			timeline.append(TweenLite.to(bg, 1, { y:0, ease:Bounce.easeOut} ));
+			timeline.append(TweenLite.to(bg.jugar, 0.5, { scaleX:1, scaleY:1 } ));
+			//timeline.append(TweenLite.to(bg, 0.5, { y: -bg.height } ));
+			timeline.append(TweenLite.to(bg.instrucciones, 0.5, { scaleX:1, scaleY:1 } ));
+			timeline.addEventListener(TweenEvent.COMPLETE, animarInstrucciones);
+			timeline.addEventListener(TweenEvent.REVERSE_COMPLETE, terminoReversa);
 		}
 		
-		private function animarBotones():void 
+		private function terminoReversa(e:TweenEvent):void 
 		{
-			TweenLite.to(bg.jugar, 0.5, { scaleX:1, scaleY:1, onComplete:animarInstrucciones } );
-			
+			dispatchEvent(new NavigationEvent(NavigationEvent.CHANGE_VIEW, true));
 		}
 		
-		private function animarInstrucciones():void 
+		private function animarInstrucciones(e:TweenEvent):void 
 		{
-			TweenLite.to(bg.instrucciones, 0.5, { scaleX:1, scaleY:1 } );
 			bg.jugar.addEventListener(MouseEvent.CLICK, clickJugar);
 			bg.jugar.addEventListener(MouseEvent.MOUSE_OVER, overJugar);
 			bg.jugar.addEventListener(MouseEvent.MOUSE_OUT, outJugar);
-			bg.jugar.buttonMode = true;
 			bg.instrucciones.addEventListener(MouseEvent.CLICK, clickInstrucciones);
+			bg.jugar.buttonMode = true;
 			bg.instrucciones.buttonMode = true;
+		}
+		
+		private function parpadear():void 
+		{
+			TweenLite.to(bg.jugar, 1, { scaleX:0.5, scaleY:0.5,onComplete:parpadear2 } );
+		}
+		
+		private function parpadear2():void {
+			TweenLite.to(bg.jugar, 1, { scaleX:1, scaleY:1,onComplete:parpadear } );
 		}
 		
 		private function outJugar(e:MouseEvent):void 
@@ -81,7 +98,11 @@ package src.views
 		
 		private function clickJugar(e:MouseEvent):void 
 		{
-			TweenLite.to(bg.jugar, 0.5, { alpha:0 } );
+			bg.jugar.removeEventListener(MouseEvent.CLICK, clickJugar);
+			bg.jugar.removeEventListener(MouseEvent.MOUSE_OVER, overJugar);
+			bg.jugar.removeEventListener(MouseEvent.MOUSE_OUT, outJugar);
+			timeline.reverse();
+			
 		}
 		
 	}

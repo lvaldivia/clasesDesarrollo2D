@@ -5,6 +5,7 @@ package src
 	import src.views.HomeView;
 	import com.greensock.TweenLite;
 	import com.greensock.easing.Bounce;
+	import src.views.manageView;
 	
 	/**
 	 * ...
@@ -22,8 +23,8 @@ package src
 		private function init(e:Event = null):void 
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
-			var h_view:HomeView = new HomeView();
-			addChild(h_view);
+			var manage:manageView = new manageView();
+			addChild(manage);
 			
 		}
 		
