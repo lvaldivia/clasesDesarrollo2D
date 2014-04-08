@@ -2,6 +2,9 @@ package src
 {
 	import flash.display.Sprite;
 	import flash.events.Event;
+	import src.views.HomeView;
+	import com.greensock.TweenLite;
+	import com.greensock.easing.Bounce;
 	
 	/**
 	 * ...
@@ -19,7 +22,9 @@ package src
 		private function init(e:Event = null):void 
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
-			// entry point
+			var h_view:HomeView = new HomeView();
+			addChild(h_view);
+			
 		}
 		
 	}
