@@ -4,6 +4,7 @@ package src.views
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
+	import src.events.NavigationEvent;
 	/**
 	 * ...
 	 * @author ISIL
@@ -34,12 +35,12 @@ package src.views
 			botones = new menu();
 			addChild(botones);
 			botones.btnJugar.addEventListener(MouseEvent.CLICK, downJugar);
-			btnJugar.addEventListener(
+			botones.btnJugar.buttonMode = true;
 		}
 		
 		private function downJugar(e:MouseEvent):void 
 		{
-			
+			dispatchEvent(new NavigationEvent(NavigationEvent.CHANGE_VIEW, { view:'instrucciones' }, true));
 		}
 		
 	}
