@@ -3,6 +3,7 @@ package src.views
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
 	import flash.events.Event;
+	import flash.events.MouseEvent;
 	/**
 	 * ...
 	 * @author ISIL
@@ -32,6 +33,13 @@ package src.views
 			addChild(bg);
 			botones = new menu();
 			addChild(botones);
+			botones.btnJugar.addEventListener(MouseEvent.CLICK, downJugar);
+			btnJugar.addEventListener(
+		}
+		
+		private function downJugar(e:MouseEvent):void 
+		{
+			
 		}
 		
 	}
