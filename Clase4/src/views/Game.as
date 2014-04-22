@@ -3,6 +3,7 @@ package src.views
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.utils.getTimer;
+	import src.objects.Particle;
 	import src.events.GameEvent;
 	import src.objects.Enemy;
 	/**
@@ -16,6 +17,7 @@ package src.views
 		private var totalTiempo:Number;
 		private var enemigos:Vector.<Enemy>;
 		private var muertos:int;
+		private var particles:Vector.<Particle>;
 		
 		public function Game() 
 		{
@@ -28,7 +30,7 @@ package src.views
 			removeEventListener(Event.ADDED_TO_STAGE, addedToStage);
 			currenTime = getTimer();
 			muertos = 0;
-			totalTiempo = 1;
+			totalTiempo = 0.5;
 			tiempoAparecer = 0;
 			enemigos = new Vector.<Enemy>();
 			stage.addEventListener(Event.ENTER_FRAME, loop);
@@ -56,8 +58,8 @@ package src.views
 				var enemy:Enemy = new Enemy();
 				addChild(enemy);
 				enemigos.push(enemy);
-				//trace("crea monstruo");
 			}
+
 			if (enemigos.length > 0) {
 				var lng:int = enemigos.length;
 				for (var i:int = 0; i < lng; i++) 

@@ -24,7 +24,6 @@ package src.views
 		private function removeStage(e:Event):void 
 		{
 			removeEventListener(Event.REMOVED_FROM_STAGE, removeStage);
-			
 		}
 		
 		private function onAddedToStage(e:Event):void 
