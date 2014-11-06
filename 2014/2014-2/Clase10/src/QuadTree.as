@@ -5,82 +5,102 @@ package
 	import flash.geom.Rectangle;
 	/**
 	 * ...
-	 * @author ISIL
+	 * @author Luis
 	 */
 	public class QuadTree 
 	{
-		private var objects:Array;
-		private var nodes:Array;
-		private var bounds:Rectangle;
-		private var level:int;
 		private var _stage:DisplayObject;
-		private var MAX_OBJECTS:int = 10;
+        private var MAX_OBJECTS:int = 10;
         private var MAX_LEVELS:int = 5;
-		
-		public function QuadTree(l:int,b:Rectangle,stage:DisplayObject) 
+        
+        private var level:int;
+        private var objects:Array; 
+        private var bounds:Rectangle;
+        private var nodes:Array; 
+		public function QuadTree(pLevel:int, pBounds:Rectangle, stage:DisplayObject) 
 		{
-			level = l;
-			bounds = b;
-			nodes = new Array(4);
-			objects = new Array();
 			_stage = stage;
+            level = pLevel;
+            objects = new Array();
+            bounds = pBounds;
+            nodes = new Array(4);
 		}
 		
-		public function clear():void {
-			while (nodes.length>0) 
-			{
-				nodes.splice(0, 1);
-			}
-			while (objects.length>0) 
-			{
-				objects.splice(0, 1);
-			}
-		}
+		public function clear():void
+        {
+            for (var i:int = 0; i < objects.length; i += 1)
+            {
+                if (objects[i] != null) 
+                {
+                    objects.splice(i, 1);
+                }
+            }
+            
+            for (var j:int = 0; j < nodes.length; j += 1)
+            {
+                if (nodes[j] != null) 
+                {
+                    nodes.splice(j, 1);
+                }
+            }
+        }
 		
-		public function split():void {
-			var subWidth:int =int(bounds.width / 2);
-			var subHeight:int = int(bounds.height / 2);
-			var x:int = int(bounds.x);
-			var y:int = int(bounds.y);
-			
-			nodes[0] = new QuadTree(level + 1, new Rectangle(x + subWidth, y, subWidth, subHeight),_stage);
-			nodes[1] = new QuadTree(level + 1, new Rectangle(x, y, subWidth, subHeight),_stage);
-			nodes[2] = new QuadTree(level + 1, new Rectangle(x, y+subHeight, subWidth, subHeight),_stage);
-			nodes[3] = new QuadTree(level + 1, new Rectangle(x+subWidth, y+subHeight, subWidth, subHeight),_stage);
-		}
+		private function split():void 
+        {
+            var subWidth:int = int(bounds.width / 2);
+            var subHeight:int = int(bounds.height / 2);
+            var x:int = int(bounds.x);
+            var y:int = int(bounds.y);
+            
+            nodes[0] = new QuadTree(level + 1, new Rectangle(x + subWidth, y, subWidth, subHeight), _stage);
+            nodes[1] = new QuadTree(level + 1, new Rectangle(x, y, subWidth, subHeight), _stage);
+            nodes[2] = new QuadTree(level + 1, new Rectangle(x, y + subHeight, subWidth, subHeight), _stage);
+            nodes[3] = new QuadTree(level + 1, new Rectangle(x + subWidth, y + subHeight, subWidth, subHeight), _stage);
+        }
 		
-		public function getIndex(pRect:Rectangle):int {
-			var index:int = -1;
-            var horizontalMidpoint:Number = bounds.x + (bounds.width / 2);
-            var verticalMidpoint:Number = bounds.y + (bounds.height / 2);
-			var topCuadrant:Boolean =  false;
-			if (pRect.y < verticalMidpoint) {
-				topCuadrant = true;
-			}
-			var bottomCuadrant:Boolean = false;
-			if (pRect.y  > verticalMidpoint) {
-				bottomCuadrant = true;
-			}
-			if (pRect.x < horizontalMidpoint) {
-				if (topCuadrant) {
-					index = 1;
-				}
-				if (bottomCuadrant) {
-					index = 2;
-				}
-			}
-			if (pRect.x > horizontalMidpoint) {
-				if (topCuadrant) {
-					index = 0;
-				}
-				if (bottomCuadrant) {
-					index = 3;
-				}
-			}
-			return index;
-		}
-		
-		public function insert(pRect:Sprite):void 
+
+		private function getIndex(pRect:Rectangle):int
+        {
+            var index:int = -1;
+            var verticalMidpoint:Number = bounds.x + (bounds.width / 2);
+            var horizontalMidpoint:Number = bounds.y + (bounds.height / 2);
+            
+            var topQuadrant:Boolean = (pRect.y < horizontalMidpoint);
+            // Object can completely fit within the bottom quadrants
+            var bottomQuadrant:Boolean = (pRect.y > horizontalMidpoint);
+ 
+            if (pRect.x < verticalMidpoint && pRect.x + pRect.width < verticalMidpoint) 
+            {
+                if (topQuadrant) 
+                {
+                    index = 1;
+                }
+                else if (bottomQuadrant) 
+                {
+                    index = 2;
+                }
+            }
+            else if (pRect.x > verticalMidpoint) 
+            {
+                if (topQuadrant) 
+                {
+                    index = 0;
+                }
+                else if (bottomQuadrant) 
+                {
+                    index = 3;
+                }
+            }
+        
+            return index;
+        }
+        
+        /*
+         * Insert the object into the quadtree. If the node
+         * exceeds the capacity, it will split and add all
+         * objects to their corresponding nodes.
+         */
+        public function insert(pRect:Sprite):void 
         {
             if (nodes[0] != null) 
             {
@@ -117,9 +137,13 @@ package
                     }
                 }
             }
+            
         }
-		
-		public function retrieve(returnObjects:Array, pRect:Sprite):Array
+        
+        /*
+         * Return all objects that could collide with the given object
+         */
+        public function retrieve(returnObjects:Array, pRect:Sprite):Array
         {
             var index:int = getIndex(pRect.getRect(_stage));
            
@@ -135,14 +159,9 @@ package
                     returnObjects.push(objects[i]);
                 }
             }
-            
         
             return returnObjects;
          }
-		
-		
-		
-		
-	}
+    }
 
 }
