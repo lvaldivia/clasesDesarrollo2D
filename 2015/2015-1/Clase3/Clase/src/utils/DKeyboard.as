@@ -14,6 +14,7 @@ package utils
 		static public var upPress:Boolean;
 		static public var leftPress:Boolean;
 		static public var rightPress:Boolean;
+		static public var spacePress:Boolean;
 		
 		static public function init(_stage:Stage):void {
 			stage = _stage;
@@ -37,6 +38,9 @@ package utils
 				case Keyboard.UP:
 					upPress = false;
 				break;
+				case Keyboard.SPACE:
+					spacePress = false;
+				break;
 			}
 		}
 		
@@ -55,6 +59,9 @@ package utils
 				break;
 				case Keyboard.UP:
 					upPress = true;
+				break;
+				case Keyboard.SPACE:
+					spacePress = true;
 				break;
 			}
 		}
