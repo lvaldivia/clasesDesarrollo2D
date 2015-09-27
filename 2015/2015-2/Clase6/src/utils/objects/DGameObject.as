@@ -21,6 +21,8 @@ package utils.objects
 		protected var _outOfBounds:Boolean;
 		protected var _isHurt:Boolean;
 		
+		protected var isHit:Boolean;
+		
 		public function DGameObject(clip:String,_life:int=100) 
 		{
 			currentClip = clip;
@@ -59,8 +61,11 @@ package utils.objects
 		
 		public function hit(target:DGameObject):Boolean 
 		{
-			if (isAlive) {
-				return hitTestObject(target);	
+			if (isAlive && !isHit) {
+				if (hitTestObject(target) && target.isAlive) {
+					isHit = true;
+					return true;
+				}
 			}
 			return false;
 		  
@@ -68,8 +73,13 @@ package utils.objects
 		
 		public function hitBmd(target:DGameObject):Boolean
 		{
-			if (isAlive) {
-				return bmd.hitTest(positionBmd, 255, target._bmd, target.positionBmd);
+			if (isAlive && !isHit) {
+				if (target.isAlive) {
+					if (bmd.hitTest(positionBmd, 255, target._bmd, target.positionBmd)) {
+						isHit = true;
+						return true;
+					}
+				}
 			}
 			return false;
 			
@@ -83,8 +93,9 @@ package utils.objects
 			var sqtr:Number = Math.sqrt(distance);
 			var r1:Number = width / 2;
 			var r2:Number = target.width / 2;
-			if (sqtr < r1 + r2 && isAlive)
+			if (sqtr < r1 + r2 && isAlive && !isHit && target.isAlive)
 			{
+				isHit = true;
 				return true;
 				
 			}
@@ -109,6 +120,14 @@ package utils.objects
 		public function kill():void {
 			isAlive = false;
 			visible = false;
+			isHit = false;
+			x = -stage.stageWidth;
+			y = -stage.stageHeight;
+			if (positionBmd != null) {
+				positionBmd.x = x;
+				positionBmd.y = y;
+			}
+			
 		}
 		
 		private function removed(e:Event):void

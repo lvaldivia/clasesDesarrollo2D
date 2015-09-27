@@ -22,12 +22,11 @@ package views
 	{
 		private var elapsed:Number = 0;
 		private var hero:Personaje;
-		private var enemys:Vector.<Enemy>;
 		private var quadtree:QuadTree;
 		private var puntaje:int = 0;
-		private var elapsed2:Number = 0;
-		private var bullets:Vector.<Bullet>;
 		private var enemyGroup:DGroup;
+		private var bulletGroup:DGroup;
+		private var elapsedBullet:Number = 0;
 		
 		public function Game()
 		{
@@ -37,7 +36,6 @@ package views
 		override public function init():void
 		{
 			super.init();
-			bullets = new Vector.<Bullet>();
 			hero = new Personaje();
 			hero.x = 150;
 			hero.y = 450;
@@ -45,6 +43,9 @@ package views
 			enemyGroup = new DGroup();
 			addChild(enemyGroup);
 			enemyGroup.createMultiple(20, Enemy, 'skin_enemy');
+			bulletGroup = new DGroup();
+			addChild(bulletGroup);
+			bulletGroup.createMultiple(20, Bullet, 'skin_hero');
 			Dkeyboard.init(stage);
 		}
 		
@@ -52,6 +53,8 @@ package views
 		{
 			super.update();
 			elapsed += DTempo.dt;
+			elapsedBullet += DTempo.dt;
+			
 			if (elapsed >= 1)
 			{
 				elapsed = 0;
@@ -64,12 +67,40 @@ package views
 					enemyGroup.addChild(enemy);
 				}
 			}
+			if (Dkeyboard.space) {
+				if (elapsedBullet>=0.5) {
+					elapsedBullet = 0;
+					var bullet:Bullet = bulletGroup.getFirstDead() as Bullet;
+					if (bullet) {
+						bullet.reset(hero.x, hero.y);
+					}else {
+						bullet = new Bullet('skin_hero', hero.x, hero.y);
+						bulletGroup.addChild(bullet);
+					}
+				}
+			}
+			
+			for (var j:int = 0; j < bulletGroup.numChildren; j++) 
+			{
+				var m:Bullet = bulletGroup.getChildAt(j) as Bullet;
+				m.update();
+			}
+			
 			for (var i:int = 0; i < enemyGroup.numChildren; i++) 
 			{
 				var mc:Enemy = enemyGroup.getChildAt(i) as Enemy;
+				for (var k:int = 0; k < bulletGroup.numChildren; k++) 
+				{
+					var b:Bullet = bulletGroup.getChildAt(k) as Bullet;
+					if (mc.hitBmd(b)) {
+						trace('aaa');
+						mc.kill();
+						b.kill();
+					}
+				}
 				if (mc.hitBmd(hero)) {
-					hero.hurt();
-					mc.kill();
+					//hero.hurt();
+					//mc.kill();
 				}
 				mc.update();
 			}

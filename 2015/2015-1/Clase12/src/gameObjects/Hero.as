@@ -13,6 +13,7 @@ package gameObjects
 		private var isJumping:Boolean;
 		public function Hero() 
 		{
+			floor = 200;
 			super();
 		}
 		

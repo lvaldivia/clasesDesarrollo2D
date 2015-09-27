@@ -10,11 +10,11 @@ package objects
 		
 		private var pX:Number;
 		private var pY:Number;
-		public function Bullet(posX:Number,posY:Number) 
+		public function Bullet(clip:String='skin_hero',posX:Number = 0,posY:Number = 0) 
 		{
 			pX = posX;
 			pY = posY;
-			super ('skin_hero');
+			super (clip);
 		}
 		
 		override public function init():void{
@@ -25,9 +25,17 @@ package objects
 		}
 		
 		
-		override public function update():void{
-			super.init();
-			y -= 2;
+		override public function update():void {
+			super.update();
+			if (isAlive) {
+				
+				
+				y -= 2;
+				if (y < -height / 2) {
+					kill();
+				}
+			}
+			
 		}
 	}
 

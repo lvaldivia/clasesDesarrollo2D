@@ -15,6 +15,7 @@ package utils.input
 		static public var Down:Boolean;
 		static public var Up:Boolean;
 		static public var Mata:Boolean;
+		public static var space:Boolean;
 		
 		public static function init(_stage:Stage):void
 		{
@@ -37,7 +38,10 @@ package utils.input
 			 break;
 			 case Keyboard.DOWN: Down = false;
 			 break;
-			 case Keyboard.W: Mata = false;
+			 case Keyboard.SPACE:
+				 space = false;
+			 break;
+			 
 			}
 		}
 		
@@ -53,7 +57,7 @@ package utils.input
 			 break;
 			 case Keyboard.DOWN: Down = true;
 			 break;
-			 case Keyboard.W: Mata = true;
+			 case Keyboard.SPACE: space = true;
 			 break;
 			}
 		}
