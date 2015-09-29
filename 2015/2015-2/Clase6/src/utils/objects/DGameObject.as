@@ -20,7 +20,6 @@ package utils.objects
 		protected var _bmd:BitmapData;
 		protected var _outOfBounds:Boolean;
 		protected var _isHurt:Boolean;
-		
 		protected var isHit:Boolean;
 		
 		public function DGameObject(clip:String,_life:int=100) 
@@ -56,6 +55,7 @@ package utils.objects
 				positionBmd.x = x;
 				positionBmd.y = y;
 			}
+			isHit = false;
 			isHurt = false;
 		}
 		
@@ -68,7 +68,6 @@ package utils.objects
 				}
 			}
 			return false;
-		  
 		}
 		
 		public function hitBmd(target:DGameObject):Boolean

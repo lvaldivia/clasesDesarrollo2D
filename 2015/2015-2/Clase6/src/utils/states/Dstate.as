@@ -74,6 +74,7 @@ package utils.states
 			
 			if (stage.hasEventListener(Event.ENTER_FRAME))
 			{
+				trace("xxx");
 				stage.removeEventListener(Event.ENTER_FRAME, loop);
 			}
 			

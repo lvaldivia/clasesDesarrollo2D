@@ -27,6 +27,8 @@ package views
 		private var enemyGroup:DGroup;
 		private var bulletGroup:DGroup;
 		private var elapsedBullet:Number = 0;
+		private var isGameOver:Boolean;
+		private var kills:int = 0;
 		
 		public function Game()
 		{
@@ -68,6 +70,7 @@ package views
 				}
 			}
 			if (Dkeyboard.space) {
+				//trace("xxxx");
 				if (elapsedBullet>=0.5) {
 					elapsedBullet = 0;
 					var bullet:Bullet = bulletGroup.getFirstDead() as Bullet;
@@ -92,10 +95,19 @@ package views
 				for (var k:int = 0; k < bulletGroup.numChildren; k++) 
 				{
 					var b:Bullet = bulletGroup.getChildAt(k) as Bullet;
+					
+					//if(!isGameOver){
+						//isGameOver = true;
+						
+					//}
 					if (mc.hitBmd(b)) {
-						trace('aaa');
 						mc.kill();
+						kills++;
 						b.kill();
+					}
+					if (kills > 0 && !isGameOver){
+						isGameOver = true;
+						DstateManager.start("menu");
 					}
 				}
 				if (mc.hitBmd(hero)) {
