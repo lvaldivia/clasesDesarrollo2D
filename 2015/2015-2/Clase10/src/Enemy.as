@@ -36,6 +36,8 @@ package
 			moveY = 0;
 			totalMove = 0;
 			agroRange = 200;
+			speed = 3;
+			turnRate = 0.3;
 		}
 		
 		override public function init():void{
@@ -48,7 +50,6 @@ package
 			super.update();
 			distanceX = target.x - x;
 			distanceY = target.y - y;
-			trace(target.x);
 			distanceTotal = Math.sqrt(
 				distanceX * distanceX + 
 				distanceY * distanceY);
@@ -58,19 +59,19 @@ package
 								distanceTotal;
 				moveDistanceY = turnRate * distanceY / 
 								distanceTotal;
-				
+			
 				moveX += moveDistanceX;
 				moveY += moveDistanceY;
 
 				totalMove = Math.sqrt(moveX * moveX + 
 								moveY * moveY);
+								//trace(totalMove);
 								
 				moveX = speed * moveX / totalMove;
 				moveY = speed * moveY / totalMove;
-				
 				x += moveX;
 				y += moveY;	
-				rotation = Math.atan2(moveY, moveX) 
+				//rotation = Math.atan2(moveY, moveX) 
 			}
 			
 		}

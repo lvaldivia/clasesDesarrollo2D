@@ -29,6 +29,19 @@ package
 			if(DKeyboard.downPress){
 				y += 5;
 			}
+			if(x<0){
+				x = 0;
+			}
+			if(x>Global.map_width-width){
+				x = Global.map_width-width;
+			}
+			if(y<0){
+				y = 0;
+			}
+			if(y>Global.map_height-height){
+				y = Global.map_height-height;
+			}
+			
 		}
 		
 	}

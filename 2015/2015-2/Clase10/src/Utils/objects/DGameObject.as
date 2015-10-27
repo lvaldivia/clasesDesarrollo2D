@@ -20,14 +20,17 @@ package Utils.objects
 		protected var _alife:Boolean;
 		protected var life:int;
 		protected var currState:String;
+		protected var fps:int;
 		private var clip:String;
 		private var centerPivot:Boolean;
 		private var defaultLife:int;
 		
 		public function DGameObject(_clip:String, _centerPivot:Boolean = true,
-										_life:int = 100,_alife:Boolean=true) 
+										_life:int = 100, _alife:Boolean = true,
+										_fps:int=12) 
 		{
 			defaultLife = _life;
+			fps = _fps;
 			clip = _clip;
 			centerPivot = _centerPivot;
 			alife = _alife;
@@ -52,7 +55,7 @@ package Utils.objects
 				var skinImg:Image = new Image(texture[0]);
 				addChild(skinImg);
 			}else {
-				var skinMc:MovieClip = new MovieClip(texture);
+				var skinMc:MovieClip = new MovieClip(texture,fps);
 				Starling.juggler.add(skinMc);
 				addChild(skinMc);
 			}
@@ -91,7 +94,7 @@ package Utils.objects
 				var skinImg:Image = new Image(textures[0]);
 				addChild(skinImg);
 			}else {
-				var skinMc:MovieClip = new MovieClip(textures);
+				var skinMc:MovieClip = new MovieClip(textures,fps);
 				Starling.juggler.add(skinMc);
 				addChild(skinMc);
 			}

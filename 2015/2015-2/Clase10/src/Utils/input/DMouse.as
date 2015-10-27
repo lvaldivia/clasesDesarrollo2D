@@ -29,7 +29,12 @@ package Utils.input
 					}
 				}
 			}
-			
+		}
+		
+		static public function destroy():void{
+			if(stage.hasEventListener(TouchEvent.TOUCH)){
+				stage.removeEventListener(TouchEvent.TOUCH, onTouch);
+			}
 		}
 		
 	}

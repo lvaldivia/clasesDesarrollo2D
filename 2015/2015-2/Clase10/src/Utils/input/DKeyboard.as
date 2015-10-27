@@ -60,6 +60,13 @@ package Utils.input
 			}
 		}
 		
+		static public function destroy():void {
+			if (stage.hasEventListener(KeyboardEvent.KEY_DOWN))	{
+				stage.removeEventListener(KeyboardEvent.KEY_DOWN, keyDown);
+				stage.removeEventListener(KeyboardEvent.KEY_UP, keyUp);
+			}
+			
+		}
 	}
 
 }

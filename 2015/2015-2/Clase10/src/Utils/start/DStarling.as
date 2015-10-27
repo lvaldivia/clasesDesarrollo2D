@@ -1,7 +1,6 @@
 package Utils.start 
 {
 	import flash.display.Stage;
-	//import flash.filesystem.File;
 	import flash.geom.Rectangle;
 	import starling.core.Starling;
 	import starling.events.Event;
@@ -58,7 +57,6 @@ package Utils.start
 		static private function onRootCreated(e:Event):void 
 		{
 			starling.removeEventListener(Event.ROOT_CREATED, onRootCreated);
-			//var file:File = File.applicationDirectory;
 			for (var i:int = 0; i < _assets.length; i++) 
 			{
 				assetsManager.enqueue(_assets[i]);

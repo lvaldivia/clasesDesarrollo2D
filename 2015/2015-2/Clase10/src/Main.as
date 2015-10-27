@@ -23,7 +23,7 @@ package
 			var assets:Vector.<String> = new Vector.<String>();
 			assets.push("assets/assets.xml");
 			assets.push("assets/assets.png");
-			
+			assets.push("assets/fondo.jpg");
 			DStarling.init(ManageView, stage, assets);
 		}
 		

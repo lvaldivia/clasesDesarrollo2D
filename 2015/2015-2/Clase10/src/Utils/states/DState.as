@@ -1,10 +1,13 @@
 package Utils.states
 {
+	import flash.geom.Rectangle;
 	import starling.display.Image;
 	import starling.display.Quad;
 	import starling.display.Sprite;
 	import starling.events.Event;
+	import Utils.objects.DGameObject;
 	import Utils.start.DStarling;
+	import Utils.states.camera.DGameCamera;
 	import Utils.time.DTempo;
 	
 	/**
@@ -13,10 +16,12 @@ package Utils.states
 	 */
 	public class DState extends Sprite
 	{
+		private var targetCamera:DGameObject;
 		protected var skin:Image;
 		protected var clip:String;
 		protected var hasLoop:Boolean;
 		protected var deltaTime:Number;
+		protected var camera:DGameCamera;
 		
 		public function DState(_clip:String = "", _loop:Boolean = true)
 		{
@@ -38,6 +43,11 @@ package Utils.states
 			addEventListener(Event.REMOVED_FROM_STAGE, removed);
 		}
 		
+		protected function setUpCamera(_cameraTarget:DGameObject, bounds:Rectangle):void {
+			targetCamera = _cameraTarget;
+			camera = new DGameCamera(this, bounds);
+		}
+		
 		private function loop(e:Event):void 
 		{
 			DTempo.update();
@@ -47,6 +57,9 @@ package Utils.states
 		public function update():void 
 		{
 			deltaTime = DTempo.dt;
+			if(camera!=null){
+				camera.go(targetCamera.x, targetCamera.y);
+			}
 		}
 		
 		private function removed(e:Event):void
