@@ -1,0 +1,42 @@
+C:\Users\Alumno-J\Desktop\Clase1\Temp\bin\Debug\Assembly-CSharp.dll
+C:\Users\Alumno-J\Desktop\Clase1\Temp\bin\Debug\Assembly-CSharp.pdb
+C:\Users\Alumno-J\Desktop\Clase1\Temp\bin\Debug\UnityEditor.dll
+C:\Users\Alumno-J\Desktop\Clase1\Temp\bin\Debug\UnityEngine.dll
+C:\Users\Alumno-J\Desktop\Clase1\Temp\bin\Debug\UnityEngine.Networking.dll
+C:\Users\Alumno-J\Desktop\Clase1\Temp\bin\Debug\UnityEngine.UI.dll
+C:\Users\Alumno-J\Desktop\Clase1\Temp\bin\Debug\Mono.Cecil.dll
+C:\Users\Alumno-J\Desktop\Clase1\Temp\bin\Debug\Unity.SerializationLogic.dll
+C:\Users\Alumno-J\Desktop\Clase1\Temp\bin\Debug\Unity.DataContract.dll
+C:\Users\Alumno-J\Desktop\Clase1\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+C:\Users\Alumno-J\Desktop\Clase1\Temp\bin\Debug\Unity.UNetWeaver.dll
+C:\Users\Alumno-J\Desktop\Clase1\Temp\bin\Debug\Unity.CecilTools.dll
+C:\Users\Alumno-J\Desktop\Clase1\Temp\bin\Debug\Mono.Cecil.Pdb.dll
+C:\Users\Alumno-J\Desktop\Clase1\Temp\bin\Debug\Mono.Cecil.Mdb.dll
+C:\Users\Alumno-J\Desktop\Clase1\Temp\bin\Debug\UnityEngine.xml
+C:\Users\Alumno-J\Desktop\Clase1\Temp\bin\Debug\UnityEditor.xml
+C:\Users\Alumno-J\Desktop\Clase1\Temp\bin\Debug\UnityEngine.UI.xml
+C:\Users\Alumno-J\Desktop\Clase1\Temp\bin\Debug\UnityEngine.Networking.xml
+C:\Users\Alumno-J\Desktop\Clase1\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+C:\Users\Alumno-J\Desktop\Clase1\obj\Debug\Assembly-CSharp.dll
+C:\Users\Alumno-J\Desktop\Clase1\obj\Debug\Assembly-CSharp.pdb
+I:\Desarrollo de juegos en 2D\Clase2\Temp\bin\Debug\Assembly-CSharp.dll
+I:\Desarrollo de juegos en 2D\Clase2\Temp\bin\Debug\Assembly-CSharp.pdb
+I:\Desarrollo de juegos en 2D\Clase2\Temp\bin\Debug\UnityEditor.dll
+I:\Desarrollo de juegos en 2D\Clase2\Temp\bin\Debug\UnityEngine.dll
+I:\Desarrollo de juegos en 2D\Clase2\Temp\bin\Debug\UnityEngine.Networking.dll
+I:\Desarrollo de juegos en 2D\Clase2\Temp\bin\Debug\UnityEngine.UI.dll
+I:\Desarrollo de juegos en 2D\Clase2\Temp\bin\Debug\Mono.Cecil.dll
+I:\Desarrollo de juegos en 2D\Clase2\Temp\bin\Debug\Unity.SerializationLogic.dll
+I:\Desarrollo de juegos en 2D\Clase2\Temp\bin\Debug\Unity.DataContract.dll
+I:\Desarrollo de juegos en 2D\Clase2\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+I:\Desarrollo de juegos en 2D\Clase2\Temp\bin\Debug\Unity.UNetWeaver.dll
+I:\Desarrollo de juegos en 2D\Clase2\Temp\bin\Debug\Unity.CecilTools.dll
+I:\Desarrollo de juegos en 2D\Clase2\Temp\bin\Debug\Mono.Cecil.Pdb.dll
+I:\Desarrollo de juegos en 2D\Clase2\Temp\bin\Debug\Mono.Cecil.Mdb.dll
+I:\Desarrollo de juegos en 2D\Clase2\Temp\bin\Debug\UnityEngine.xml
+I:\Desarrollo de juegos en 2D\Clase2\Temp\bin\Debug\UnityEditor.xml
+I:\Desarrollo de juegos en 2D\Clase2\Temp\bin\Debug\UnityEngine.UI.xml
+I:\Desarrollo de juegos en 2D\Clase2\Temp\bin\Debug\UnityEngine.Networking.xml
+I:\Desarrollo de juegos en 2D\Clase2\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+I:\Desarrollo de juegos en 2D\Clase2\obj\Debug\Assembly-CSharp.dll
+I:\Desarrollo de juegos en 2D\Clase2\obj\Debug\Assembly-CSharp.pdb
