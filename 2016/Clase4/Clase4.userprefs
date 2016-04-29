@@ -1,0 +1,16 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Game\CameraMovement.cs">
+    <Files>
+      <File FileName="Assets\Scripts\Game\Player\Player.cs" Line="32" Column="61" />
+      <File FileName="Assets\Scripts\Game\Player\PlayerStates.cs" Line="11" Column="1" />
+      <File FileName="Assets\Scripts\Game\Player\PlayerGenerator.cs" Line="9" Column="47" />
+      <File FileName="Assets\Scripts\Game\BgLooper.cs" Line="15" Column="36" />
+      <File FileName="Assets\Scripts\Game\CameraMovement.cs" Line="31" Column="4" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
