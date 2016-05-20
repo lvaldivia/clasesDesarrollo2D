@@ -1,0 +1,16 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Game\Player.cs">
+    <Files>
+      <File FileName="Assets\Scripts\GameOver\GameOverController.cs" Line="15" Column="55" />
+      <File FileName="Assets\Scripts\Game\Player.cs" Line="82" Column="4" />
+      <File FileName="Assets\Scripts\Game\Spawner.cs" Line="33" Column="5" />
+      <File FileName="Assets\Scripts\Game\Enemy.cs" Line="12" Column="18" />
+      <File FileName="Assets\Scripts\Game\Hud.cs" Line="42" Column="21" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
